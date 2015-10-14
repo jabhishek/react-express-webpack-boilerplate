@@ -33,7 +33,7 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.js?$/,
-				exclude: /node_modules/,
+				include: [path.resolve(__dirname, "client")],
 				loader: 'babel'
 			}, {
 				test: /\.css$/,

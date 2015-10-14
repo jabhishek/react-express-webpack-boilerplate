@@ -1,9 +1,9 @@
 /* eslint no-console: 0 */
-import path from 'path';
-import express from 'express';
-import webpack from 'webpack';
-import webpackDevServer from 'webpack-dev-server';
-import config from './../webpack.config.js';
+var path = require('path');
+var express = require('express');
+var webpack = require('webpack');
+var webpackDevServer = require('webpack-dev-server');
+var config = require('./../webpack.config.js');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const defaultPort = 8000;

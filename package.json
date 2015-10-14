@@ -17,7 +17,7 @@
   "homepage": "https://github.com/jabhishek/react-express-webpack-boilerplate",
   "scripts": {
     "test": "",
-    "start": "babel-node server/app",
+    "start": "node server/app",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
