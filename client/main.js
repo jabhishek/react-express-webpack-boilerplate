@@ -1,6 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App.js';
-import './main.css';
+import Router from 'react-router';
+import routes from './routes';
+import Main from './main.less';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//React.render(<App />, document.getElementById('root'));
+
+Router.run(routes, Router.HistoryLocation, (Root) => {
+	React.render(<Root/>, document.getElementById('root'));
+});
+

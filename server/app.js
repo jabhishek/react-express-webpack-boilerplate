@@ -10,15 +10,14 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const defaultPort = 8000;
 const port = isDeveloping ? defaultPort : (process.env.PORT || defaultPort);
 const app = express();
-
-app.use(express.static(__dirname + '/dist'));
+var rootPath = path.normalize(__dirname + '/..');
+app.use(express.static(rootPath + '/dist'));
 
 if (isDeveloping) {
 	const compiler = webpack(config);
 
 	app.use(webpackMiddleware(compiler, {
 		publicPath: config.output.publicPath,
-		contentBase: 'src',
 		stats: {
 			colors: true,
 			hash: false,
@@ -32,8 +31,13 @@ if (isDeveloping) {
 	app.use(webpackHotMiddleware(compiler));
 }
 
+
+
 app.get('*', function response(req, res) {
-	res.sendFile(path.join(__dirname, 'dist/index.html'));
+	console.log('redirecting');
+	console.log(rootPath);
+	console.log('-----------------');
+	res.sendFile(path.join(rootPath, 'dist/index.html'));
 });
 
 app.listen(port, 'localhost', function onStart(err) {

@@ -35,7 +35,10 @@ module.exports = {
       loader: 'babel'
     }, {
       test: /\.css$/,
-      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      loader: 'style!css'
+    }, {
+      test: /\.less$/,
+      loader: 'style!css!less'
     }]
   },
   resolve: {

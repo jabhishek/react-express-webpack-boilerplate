@@ -1,33 +1,30 @@
 {
-  "name": "webpack-express-boilerplate",
+  "name": "react-webpack-express-boilerplate",
   "version": "0.1.0",
   "description": "A boilerplate for running a Webpack workflow in Node express",
-  "main": "server.js",
+  "main": "server/app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate.git"
+    "url": "https://github.com/jabhishek/react-express-webpack-boilerplate"
   },
   "keywords": [
     "express",
     "webpack",
     "node"
   ],
-  "author": "Christian Alfoni",
+  "author": "Abhishek Jain",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
-  },
-  "homepage": "https://github.com/christianalfoni/webpack-express-boilerplate",
+  "homepage": "https://github.com/jabhishek/react-express-webpack-boilerplate",
   "scripts": {
     "test": "",
     "start": "babel-node server/app",
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
-    "react": "0.14.0-rc1 ",
-    "react-dom": "0.14.0-rc1",
     "express": "^4.13.3",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "react": "^0.13.0",
+    "react-router": "^0.13.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
@@ -42,8 +39,9 @@
     "eslint-plugin-react": "^3.4.2",
     "extract-text-webpack-plugin": "^0.8.2",
     "html-webpack-plugin": "^1.6.1",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
     "postcss-loader": "^0.6.0",
-    "react-addons-test-utils": "0.14.0-rc1",
     "react-transform-hmr": "^1.0.0",
     "rimraf": "^2.4.3",
     "stats-webpack-plugin": "^0.2.1",
