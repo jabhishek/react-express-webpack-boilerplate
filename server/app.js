@@ -18,10 +18,11 @@ if (isDeveloping) {
 
 	var server = new webpackDevServer(webpack(config), {
 		publicPath: config.output.publicPath,
-		historyApiFallback: true
+		historyApiFallback: true,
+		hot: true
 	});
 
-	app.use(webpackHotMiddleware(compiler));
+	//server.use(webpackHotMiddleware(compiler));
 
 	server.listen(8080);
 
