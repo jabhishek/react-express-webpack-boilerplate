@@ -2,7 +2,7 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
+import webpackDevServer from 'webpack-dev-server';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './../webpack.config.js';
 
@@ -16,33 +16,28 @@ app.use(express.static(rootPath + '/dist'));
 if (isDeveloping) {
 	const compiler = webpack(config);
 
-	app.use(webpackMiddleware(compiler, {
+	var server = new webpackDevServer(webpack(config), {
 		publicPath: config.output.publicPath,
-		stats: {
-			colors: true,
-			hash: false,
-			timings: true,
-			chunks: false,
-			chunkModules: false,
-			modules: false
-		}
-	}));
+		historyApiFallback: true
+	});
 
 	app.use(webpackHotMiddleware(compiler));
+
+	server.listen(8080);
+
+
+} else {
+	app.get('*', function response(req, res) {
+		res.sendFile(path.join(rootPath, 'dist/index.html'));
+	});
+
+	app.listen(port, 'localhost', function onStart(err) {
+		if (err) {
+			console.log(err);
+		}
+		console.info('==> ? Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
+	});
 }
 
 
 
-app.get('*', function response(req, res) {
-	console.log('redirecting');
-	console.log(rootPath);
-	console.log('-----------------');
-	res.sendFile(path.join(rootPath, 'dist/index.html'));
-});
-
-app.listen(port, 'localhost', function onStart(err) {
-	if (err) {
-		console.log(err);
-	}
-	console.info('==> ? Listening on port %s. Open up http://localhost:%s/ in your browser.', port, port);
-});

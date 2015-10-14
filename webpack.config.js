@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: 'eval-source-map',
   entry: [
-    'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client?reload=true&http://localhost:8080',
     path.join(__dirname, 'client/main.js')
   ],
   output: {
