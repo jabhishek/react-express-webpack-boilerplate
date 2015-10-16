@@ -21,6 +21,7 @@
     "build": "rimraf dist && set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
+    "classnames": "^2.1.5",
     "express": "^4.13.3",
     "lodash": "^3.10.1",
     "react": "^0.13.0",

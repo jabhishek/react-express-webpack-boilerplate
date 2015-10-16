@@ -1,0 +1,98 @@
+@import "../../globals/variables";
+
+.navbar {
+  background: black;
+  color: white;
+
+  .navbar-container {
+    display: flex;
+    height: @headerHeight;
+    line-height: @headerHeight;
+    flex-direction: column;
+    border-bottom: 1px solid #222;
+
+    @media (min-width: 720px) {
+      flex-direction: row;
+      border-bottom: none;
+    }
+
+    .navbar-header {
+      display: flex;
+      flex-direction: row;
+      @media (min-width: 720px) {
+        flex: 1;
+      }
+
+      .app-title {
+        font-size: 2rem;
+        color: white;
+        flex: 1;
+        padding-left: 1rem;
+
+        a {
+          display: inline-block;
+          color: white;
+        }
+      }
+
+      i {
+        line-height: @headerHeight;
+        height: @headerHeight;
+        padding: 0 15px;
+        background: @pink;
+        cursor: pointer;
+
+        @media (min-width: 720px) {
+          display: none;
+        }
+      }
+    }
+
+    .user {
+      padding-right: 1rem;
+      margin-right: 1rem;
+    }
+
+    .nav {
+      text-align: left;
+      z-index: 2;
+      display: none;
+      &.expanded {
+        display: block;
+      }
+
+      li {
+        background: black;
+        border-bottom: 1px solid #222;
+        a {
+          color: white;
+          line-height: 3rem;
+          height: 3rem;
+          width: 100%;
+          display: block;
+        }
+      }
+
+      @media @tablets {
+        display: block;
+        text-align: right;
+
+        li {
+          display: inline-block;
+          border-bottom: none;
+          border-right: 1px solid #222;
+          a {
+            line-height: @headerHeight;
+            height: @headerHeight;
+            padding: 0 10px;
+
+            &.active {
+              background: @pink;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

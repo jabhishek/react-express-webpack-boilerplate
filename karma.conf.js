@@ -1,101 +1,107 @@
 var webpack = require("webpack");
 
-module.exports = function(config) {
-	config.set({
+module.exports = function (config) {
+    config.set({
 
-		// base path, that will be used to resolve files and exclude
-		basePath: '',
-
-
-		// frameworks to use
-		frameworks: ['jasmine'],
+        // base path, that will be used to resolve files and exclude
+        basePath: '',
 
 
-		// list of files / patterns to load in the browser
-		files: [
-			'tests/**/*spec.js'
-		],
+        // frameworks to use
+        frameworks: ['jasmine'],
 
 
-		// list of preprocessors
-		preprocessors: {
-			'tests/**/*.js': ['webpack']
-		},
+        // list of files / patterns to load in the browser
+        files: [
+            'tests/**/*spec.js'
+        ],
 
 
-		webpack: {
-			resolve: {
-				extensions: ["", ".js"]
-			},
-			module: {
-				loaders: [
-					{ test: /\.js$/, loader: "babel-loader?plugins=rewire", exclude: /node_modules/ }
-				],
-				plugins: [
-					new webpack.DefinePlugin({
-						'process.env.BABEL_ENV': JSON.stringify('test')
-					})
-				]
-			}
-		},
+        // list of preprocessors
+        preprocessors: {
+            'tests/**/*.js': ['webpack']
+        },
 
 
-		webpackMiddleware: {
-			stats: {
-				colors: true
-			}
-		},
+        webpack: {
+            resolve: {
+                extensions: ["", ".js"]
+            },
+            module: {
+                loaders: [
+                    {
+                        test: /\.js$/, loader: "babel-loader?plugins=rewire", exclude: /node_modules/
+                    },
+                    {
+                        test: /\.less$/,
+                        loader: 'style!css!less'
+                    }
+                ],
+                plugins: [
+                    new webpack.DefinePlugin({
+                        'process.env.BABEL_ENV': JSON.stringify('test')
+                    })
+                ]
+            }
+        },
 
 
-		// test results reporter to use
-		// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-		reporters: ['spec'],
+        webpackMiddleware: {
+            stats: {
+                colors: true
+            }
+        },
 
 
-		// web server port
-		port: 9876,
+        // test results reporter to use
+        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+        reporters: ['spec'],
 
 
-		// enable / disable colors in the output (reporters and logs)
-		colors: true,
+        // web server port
+        port: 9876,
 
 
-		// level of logging
-		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-		logLevel: config.LOG_INFO,
+        // enable / disable colors in the output (reporters and logs)
+        colors: true,
 
 
-		// enable / disable watching file and executing tests whenever any file changes
-		autoWatch: true,
+        // level of logging
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        logLevel: config.LOG_INFO,
 
 
-		// Start these browsers, currently available:
-		// - Chrome
-		// - ChromeCanary
-		// - Firefox
-		// - Opera (has to be installed with `npm install karma-opera-launcher`)
-		// - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
-		// - PhantomJS
-		// - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
-		browsers: ['Chrome'],
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
 
 
-		// If browser does not capture in given timeout [ms], kill it
-		captureTimeout: 60000,
+        // Start these browsers, currently available:
+        // - Chrome
+        // - ChromeCanary
+        // - Firefox
+        // - Opera (has to be installed with `npm install karma-opera-launcher`)
+        // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
+        // - PhantomJS
+        // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
+        browsers: ['Chrome'],
 
 
-		// Continuous Integration mode
-		// if true, it capture browsers, run tests and exit
-		singleRun: false,
+        // If browser does not capture in given timeout [ms], kill it
+        captureTimeout: 60000,
 
 
-		// List plugins explicitly, since autoloading karma-webpack
-		// won't work here
-		plugins: [
-			"karma-webpack",
-			"karma-jasmine",
-			"karma-spec-reporter",
-			"karma-chrome-launcher"
-		]
-	});
+        // Continuous Integration mode
+        // if true, it capture browsers, run tests and exit
+        singleRun: false,
+
+
+        // List plugins explicitly, since autoloading karma-webpack
+        // won't work here
+        plugins: [
+            "karma-webpack",
+            "karma-jasmine",
+            "karma-spec-reporter",
+            "karma-chrome-launcher"
+        ]
+    });
 };

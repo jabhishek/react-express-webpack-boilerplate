@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from 'react-router';
-
+import Header from './components/common/header';
 var RouteHandler = Router.RouteHandler;
 
 export default class App extends React.Component {
@@ -10,6 +10,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
+                <Header/>
                 <div className="view">
                     <RouteHandler />
                 </div>

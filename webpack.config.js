@@ -41,6 +41,8 @@ module.exports = {
 			}, {
 				test: /\.less$/,
 				loader: 'style!css!less'
+				/* To have it create a separate bundle for css
+				 loader: ExtractTextPlugin.extract('style', 'css!less')*/
 			}
 		]
 	},

@@ -1,8 +1,50 @@
-body {
-    font-family: Raleway, sans-serif;
-    margin: 0;
+@import "./globals/reset";
 
-    h1 {
-        font-size: 1.5rem;
+html {
+  font-size: 62.5%;
+  font-family: Raleway, sans-serif;
+  height: 100%;
+}
+
+body {
+  font-size: 1.4rem;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  .loading {
+    height: 100%;
+    background: #eeeeee;
+    flex: 1;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .loading-items {
+      font-size: 4rem;
+      text-align: center;
+      .text {
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      i {
+        display: inline-block;
+      }
     }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.view {
+  padding: 10px;
 }
