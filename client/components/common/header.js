@@ -1,7 +1,7 @@
 import React from 'react';
-import Router from 'react-router';
+import {Link} from 'react-router';
 import classnames from 'classnames';
-let Link = Router.Link;
+//let Link = Router.Link;
 import './Header.less';
 
 
@@ -32,7 +32,7 @@ export default class Header extends React.Component {
 				<div className="navbar-container">
 					<div className="navbar-header">
 						<div className="app-title">
-							<Link to="home">ReactApp</Link>
+							<Link to="/home">ReactApp</Link>
 						</div>
 
 						<div className="user">
@@ -42,8 +42,8 @@ export default class Header extends React.Component {
 						<i className="fa fa-bars" onClick={this.onToggleClick.bind(this)}></i>
 					</div>
 					<ul className={ulClassList}>
-						<li><Link to="home" onClick={this.onLinkClick.bind(this)}>Home</Link></li>
-						<li><Link to="about" onClick={this.onLinkClick.bind(this)}>About</Link></li>
+						<li><Link to="/home" activeClassName="active" onClick={this.onLinkClick.bind(this)}>Home</Link></li>
+						<li><Link to="/about" activeClassName="active" onClick={this.onLinkClick.bind(this)}>About</Link></li>
 					</ul>
 				</div>
 			</nav>
