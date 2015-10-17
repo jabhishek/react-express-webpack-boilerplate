@@ -43,6 +43,7 @@ export default class Header extends React.Component {
 					</div>
 					<ul className={ulClassList}>
 						<li><Link to="home" onClick={this.onLinkClick.bind(this)}>Home</Link></li>
+						<li><Link to="about" onClick={this.onLinkClick.bind(this)}>About</Link></li>
 					</ul>
 				</div>
 			</nav>
