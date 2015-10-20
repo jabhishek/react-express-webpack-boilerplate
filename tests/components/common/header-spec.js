@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactAddons from 'react/addons';
 var testUtils = ReactAddons.addons.TestUtils;
 
@@ -20,17 +21,17 @@ describe("header", function() {
 		});
 
 		it("should have an app title with text ReactApp", function() {
-			var appTitleNode = React.findDOMNode(header).querySelector('.app-title a');
+			var appTitleNode = ReactDOM.findDOMNode(header).querySelector('.app-title a');
 			expect(appTitleNode.innerText).toEqual('ReactApp');
 		});
 
 		it("should have user name displayed", function() {
-			var userNode = React.findDOMNode(header).querySelector('.user');
+			var userNode = ReactDOM.findDOMNode(header).querySelector('.user');
 			expect(userNode.innerText).toEqual('Abhi');
 		});
 
 		it("should have class navbar", function() {
-			var headerNode = React.findDOMNode(header);
+			var headerNode = ReactDOM.findDOMNode(header);
 			expect(headerNode.classList.contains('navbar')).toBeTruthy();
 		});
 
@@ -41,7 +42,7 @@ describe("header", function() {
 
 		it("nav should not have class expanded", function() {
 			var nav = testUtils.findRenderedDOMComponentWithClass(header, 'nav');
-			var navNode = React.findDOMNode(nav);
+			var navNode = ReactDOM.findDOMNode(nav);
 			expect(navNode.classList.contains('expanded')).toBeFalsy();
 		});
 		it("should have an icon with class fa-bars", function() {
@@ -69,7 +70,7 @@ describe("header", function() {
 
 		it("should toggle class expanded on nav when icon is clicked", function() {
 			var nav = testUtils.findRenderedDOMComponentWithClass(header, 'nav');
-			var navDOM = React.findDOMNode(nav);
+			var navDOM = ReactDOM.findDOMNode(nav);
 
 			clickToggleIcon();
 			expect(navDOM.classList.contains('expanded')).toBeTruthy();
@@ -80,9 +81,9 @@ describe("header", function() {
 
 		it("should collapse the menu when a link is clicked", function() {
 			var nav = testUtils.findRenderedDOMComponentWithClass(header, 'nav');
-			var navDOM = React.findDOMNode(nav);
+			var navDOM = ReactDOM.findDOMNode(nav);
 
-			var links = Array.from(React.findDOMNode(header).querySelectorAll('.nav a'));
+			var links = Array.from(ReactDOM.findDOMNode(header).querySelectorAll('.nav a'));
 			links.forEach(function(link) {
 				clickToggleIcon();
 				expect(navDOM.classList.contains('expanded')).toBeTruthy();
@@ -91,5 +92,4 @@ describe("header", function() {
 			});
 		});
 
-	});
-});
+	});});
