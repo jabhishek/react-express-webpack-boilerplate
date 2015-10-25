@@ -4,12 +4,10 @@ import ReactAddons from 'react/addons';
 import Home from './../../../client/components/home/homePage';
 var testUtils = ReactAddons.addons.TestUtils;
 
-console.log(Home.__Rewire__);
-
 describe("HomePage", function() {
 	beforeEach(function() {
 		Home.__Rewire__('Page', React.createClass({
-			render: function() { return <div {...this.props}>Blah!!</div>; }
+			render: function() { return <div>{ this.props.children }</div>; }
 		}));
 	});
 
@@ -19,6 +17,8 @@ describe("HomePage", function() {
 
 	it("should be a composite component", function() {
 		var homePage = testUtils.renderIntoDocument(<Home />);
+		var homePageElem = ReactDOM.findDOMNode(homePage);
+
 		expect(testUtils.isCompositeComponent(homePage)).toBeTruthy();
 	});
 });
