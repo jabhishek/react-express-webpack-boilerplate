@@ -17,9 +17,9 @@ class TodoStore {
     }
 
     addTodo(todo) {
-        let todos = this.todos;
-        let ids = _.pluck(todos, 'id').sort(sortNumbers);
-        let maxId = ids.length ? ids[0] : 0;
+        const todos = this.todos;
+        const ids = _.pluck(todos, 'id').sort(sortNumbers);
+        const maxId = ids.length ? ids[0] : 0;
         this.todos.push({id: maxId + 1, text: todo.text});
     }
 
@@ -27,6 +27,5 @@ class TodoStore {
         this.todos = [];
     }
 }
-var store = alt.createStore(TodoStore, 'TodoStore');
+export default alt.createStore(TodoStore, 'TodoStore');
 
-export default store;

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import classnames from 'classnames';
-//let Link = Router.Link;
 import './Header.less';
 
 
@@ -21,10 +20,10 @@ export default class Header extends React.Component {
 	}
 
 	render() {
-		var ulClassList = classnames({
-			"nav": true
+		const ulClassList = classnames({
+			'nav': true
 		}, {
-			"expanded": this.state.isExpanded
+			'expanded': this.state.isExpanded
 		});
 
 		return (
@@ -47,6 +46,6 @@ export default class Header extends React.Component {
 					</ul>
 				</div>
 			</nav>
-		)
+		);
 	}
 }

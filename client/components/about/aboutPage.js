@@ -14,6 +14,7 @@ export default class AboutPage extends React.Component {
                     <li>Webpack</li>
                 </ul>
             </Page>
-        )
+        );
     }
 }
+

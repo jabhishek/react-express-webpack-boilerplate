@@ -3,8 +3,8 @@ import classnames from 'classnames';
 
 export default class Page extends React.Component {
     render() {
-        var classList = classnames("page", this.props.className);
-        var header;
+        const classList = classnames('page', this.props.className);
+        let header;
         if (this.props.headerText) {
             header = <h1>{ this.props.headerText }</h1>;
         }
@@ -13,11 +13,12 @@ export default class Page extends React.Component {
                 { header }
                 { this.props.children }
             </div>
-        )
+        );
     }
 }
 
 Page.propTypes = {
-  className: React.PropTypes.string,
-  headerText: React.PropTypes.string
+    className: React.PropTypes.string,
+    headerText: React.PropTypes.string,
+    children: React.PropTypes.any
 };
