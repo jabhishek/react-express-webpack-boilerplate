@@ -8,6 +8,10 @@ class TodoActions {
     clearAllTodos() {
         this.dispatch();
     }
+
+    removeTodo(id) {
+        this.dispatch(id);
+    }
 }
 const actions = alt.createActions(TodoActions);
 export default actions;

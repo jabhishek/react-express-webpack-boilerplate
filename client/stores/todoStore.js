@@ -2,29 +2,38 @@ import alt from '../alt';
 import TodoActions from '../actions/todoActions';
 import _ from 'lodash';
 
-function sortNumbers(a, b) {
+const sortNumbers = (a, b) => {
     return b - a;
-}
-
+};
 class TodoStore {
     constructor() {
         this.bindListeners({
             addTodo: TodoActions.addTodo,
-            clearAllTodos: TodoActions.clearAllTodos
+            clearAllTodos: TodoActions.clearAllTodos,
+            removeTodo: TodoActions.removeTodo
         });
 
         this.todos = [];
     }
 
     addTodo(todo) {
-        const todos = this.todos;
-        const ids = _.pluck(todos, 'id').sort(sortNumbers);
+        const ids = _.pluck(this.todos, 'id').sort(sortNumbers);
         const maxId = ids.length ? ids[0] : 0;
         this.todos.push({id: maxId + 1, text: todo.text});
     }
 
     clearAllTodos() {
-        this.todos = [];
+        this.todos.length = 0;
+    }
+
+    removeTodo(id = null) {
+        if (id === null) {
+            return;
+        }
+        const todoIndex = this.todos.findIndex((todo) => todo.id === id);
+        if (todoIndex !== -1) {
+            this.todos.splice(todoIndex, 1);
+        }
     }
 }
 export default alt.createStore(TodoStore, 'TodoStore');
