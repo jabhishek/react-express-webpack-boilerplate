@@ -3,6 +3,7 @@ import connectToStores from 'alt/utils/connectToStores';
 import React from 'react';
 import Page from '../common/Page';
 import TodoStore from '../../stores/todoStore';
+import TodoSection from './TodoSection';
 
 @connectToStores
 export default class HomePage extends React.Component {
@@ -15,26 +16,15 @@ export default class HomePage extends React.Component {
 	}
 
 	render() {
-		let todos;
-		if (this.props.todos) {
-			let index = 0;
-			todos = this.props.todos.map((todo) => {
-				return (
-					<li key={index++}>{todo.text}</li>
-				);
-			});
-		}
 		return (
 			<Page className="home-page" headerText="Home">
-				<ul>
-					{todos}
-				</ul>
+				<TodoSection className="todo-section" todos={this.props.todos}/>
 			</Page>
 		);
 	}
 }
 
 HomePage.propTypes = {
-	todos: React.PropTypes.string
+	todos: React.PropTypes.array
 };
 

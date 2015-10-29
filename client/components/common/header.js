@@ -34,10 +34,6 @@ export default class Header extends React.Component {
 							<Link to="/home">ReactApp</Link>
 						</div>
 
-						<div className="user">
-							Abhi
-						</div>
-
 						<i className="fa fa-bars" onClick={this.onToggleClick.bind(this)}></i>
 					</div>
 					<ul className={ulClassList}>
