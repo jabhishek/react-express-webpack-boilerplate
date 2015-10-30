@@ -3,6 +3,7 @@ import connectToStores from 'alt/utils/connectToStores';
 import React from 'react';
 import Page from '../common/Page';
 import TodoStore from '../../stores/todoStore';
+import TodoActions from '../../actions/todoActions';
 import TodoSection from './TodoSection';
 
 @connectToStores
@@ -15,10 +16,17 @@ export default class HomePage extends React.Component {
 		return TodoStore.getState();
 	}
 
+	onTodoSave(text) {
+		TodoActions.addTodo(text);
+	}
+
 	render() {
 		return (
 			<Page className="home-page" headerText="Home">
-				<TodoSection className="todo-section" todos={this.props.todos}/>
+				<TodoSection
+					className="todo-section"
+					todos={this.props.todos}
+					onTodoSave={this.onTodoSave.bind(this)}/>
 			</Page>
 		);
 	}

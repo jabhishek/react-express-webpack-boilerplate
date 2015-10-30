@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactAddons from 'react/addons';
 import Home from './../../../client/components/home/homePage';
 import TodoStore from './../../../client/stores/todoStore';
+import TodoActions from './../../../client/actions/todoActions';
 var testUtils = ReactAddons.addons.TestUtils;
 
 describe("HomePage", () => {
@@ -26,7 +27,6 @@ describe("HomePage", () => {
 
 	it("should be a composite component", () => {
 		let homePage = testUtils.renderIntoDocument(<Home />);
-		console.log(ReactDOM.findDOMNode(homePage));
 		expect(testUtils.isCompositeComponent(homePage)).toBeTruthy();
 	});
 
@@ -42,5 +42,14 @@ describe("HomePage", () => {
 		const todoSection = testUtils.findRenderedDOMComponentWithClass(home, 'todo-section');
 		const todoSectionNode = ReactDOM.findDOMNode(todoSection);
 		expect(todoSectionNode.innerText).toEqual('1');
+	});
+
+	it("onTodoSave method should call addTodo action", () => {
+		spyOn(TodoActions, 'addTodo');
+		const home = testUtils.renderIntoDocument(<Home />);
+
+		// hacky - is there a better way??
+		home._reactInternalInstance._renderedComponent._instance.onTodoSave('Hey!!');
+		expect(TodoActions.addTodo).toHaveBeenCalledWith('Hey!!');
 	});
 });

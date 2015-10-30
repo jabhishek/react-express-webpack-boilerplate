@@ -10,8 +10,9 @@ describe("TodoSection", () => {
 	beforeEach(() => {
 		TodoSection.__Rewire__('TodoList', React.createClass({
 			render: function () {
+				var todos = this.props.todos ? this.props.todos.length : "";
 				return (<div className="todo-list">
-					{this.props.todos.length}
+					{todos}
 				</div>);
 			}
 		}));
@@ -23,7 +24,15 @@ describe("TodoSection", () => {
 
 	it("should render TodoList component correctly", () => {
 		let todoSection = testUtils.renderIntoDocument(<TodoSection todos={todos}/>);
-		var todoList = testUtils.findRenderedDOMComponentWithClass(todoSection, 'todo-list');
+		let todoList = testUtils.findRenderedDOMComponentWithClass(todoSection, 'todo-list');
 		expect(ReactDOM.findDOMNode(todoList).textContent).toEqual('2');
-	})
+	});
+
+	it("onTodoSave should call the passed method", () => {
+		var spy = jasmine.createSpy('spy');
+		let todoSection = testUtils.renderIntoDocument(<TodoSection todos={todos} onTodoSave={spy}/>);
+
+		todoSection.onTodoSave('Hey!!');
+		expect(spy).toHaveBeenCalledWith('Hey!!');
+	});
 });
