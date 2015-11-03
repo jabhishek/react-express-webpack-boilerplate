@@ -1,16 +1,36 @@
+@import "../../globals/variables";
+
 .inputField {
   position: relative;
+  border: none;
 
   > label {
     position: absolute;
+    transform: translate3d(0, 22px, 0);
+    opacity: 0.5;
     pointer-events: none;
+    transition: 0.3s;
   }
 
   > input {
     border: none;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #ddd;
     padding: 20px 0 5px 0;
     width: 100%;
     outline: none;
   }
+
+
+  &.has-focus, &.has-value {
+    > label {
+      transform: translate3d(-10px, 0, 0) scale(0.8);
+      color: @pink;
+      opacity: 1;
+    }
+
+    > input {
+      border-bottom: 1px solid @pink;
+    }
+  }
+
 }

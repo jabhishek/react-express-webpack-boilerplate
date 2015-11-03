@@ -6,9 +6,9 @@ var testUtils = ReactAddons.addons.TestUtils;
 
 
 describe("InputField", () => {
-	let input, label;
+	let input, label, inputField;
 	function createControl(props) {
-		let inputField = testUtils.renderIntoDocument(
+		inputField = testUtils.renderIntoDocument(
 			<InputField
 				{...props}/>
 		);
@@ -53,4 +53,27 @@ describe("InputField", () => {
 
 		expect(inputNode.value).toEqual('');
 	});
+
+	it("should have class has-focus when input is in focus and remove class on blur", () => {
+		createControl({name:"todo"});
+		let inputNode = ReactDOM.findDOMNode(input);
+		testUtils.Simulate.focus(inputNode);
+
+		let inputFieldNode = ReactDOM.findDOMNode(inputField);
+		expect(inputFieldNode.classList.contains('has-focus')).toBeTruthy();
+
+		testUtils.Simulate.blur(inputNode);
+		inputFieldNode = ReactDOM.findDOMNode(inputField);
+		expect(inputFieldNode.classList.contains('has-focus')).toBeFalsy();
+	});
+
+	it("should have class has-value when input has value", () => {
+		createControl({name:"todo"});
+		let inputNode = ReactDOM.findDOMNode(input);
+		inputNode.value = 'Test';
+		testUtils.Simulate.change(inputNode);
+
+		let inputFieldNode = ReactDOM.findDOMNode(inputField);
+		expect(inputFieldNode.classList.contains('has-value')).toBeTruthy();
+	})
 });
