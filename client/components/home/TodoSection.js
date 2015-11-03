@@ -11,7 +11,7 @@ export default class TodoSection extends React.Component {
 
 	render() {
         return (
-            <div>
+            <div className="todo-section">
                 <TodoList todos={this.props.todos}/>
                 <InputField labelText="Enter a todo task"
                             name="todo"

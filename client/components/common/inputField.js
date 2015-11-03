@@ -1,4 +1,5 @@
 import React from 'react';
+import './inputField.less';
 
 export default class InputField extends React.Component {
 	constructor(props) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import './TodoItem.less';
 
 export default class TodoItem extends React.Component {
 	render() {

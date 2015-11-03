@@ -4,20 +4,14 @@ import ReactAddons from 'react/addons';
 import Home from './../../../client/components/home/homePage';
 import TodoStore from './../../../client/stores/todoStore';
 import TodoActions from './../../../client/actions/todoActions';
+import createMockComponent from '../../utils/createMockComponent';
+
 var testUtils = ReactAddons.addons.TestUtils;
 
 describe("HomePage", () => {
 	beforeEach(() => {
-		Home.__Rewire__('Page', React.createClass({
-			render: function () {
-				return <div>{ this.props.children }</div>;
-			}
-		}));
-		Home.__Rewire__('TodoSection', React.createClass({
-			render: function () {
-				return <div className="todo-section">{this.props.todos.length}</div>;
-			}
-		}));
+		Home.__Rewire__('Page', createMockComponent({className: 'page'}));
+		Home.__Rewire__('TodoSection', createMockComponent({ className: 'todo-section'}));
 	});
 
 	afterEach(() => {
@@ -39,9 +33,17 @@ describe("HomePage", () => {
 	it("should render TodoSection component correctly", () => {
 		spyOn(TodoStore, 'getState').and.returnValue({todos: [{text: "Hey!!"}]});
 		const home = testUtils.renderIntoDocument(<Home />);
-		const todoSection = testUtils.findRenderedDOMComponentWithClass(home, 'todo-section');
-		const todoSectionNode = ReactDOM.findDOMNode(todoSection);
+		const homeNode = ReactDOM.findDOMNode(home);
+		const todoSectionNode = homeNode.querySelectorAll('.todo-section .todos')[0];
 		expect(todoSectionNode.innerText).toEqual('1');
+	});
+
+	it("should have a header containing the count of todos", () => {
+		spyOn(TodoStore, 'getState').and.returnValue({todos: [{text: "Hey!!"}, {text: "Hello!!"}]});
+		const home = testUtils.renderIntoDocument(<Home />);
+		const header = testUtils.findRenderedDOMComponentWithClass(home, 'headerText');
+		const headerNode = ReactDOM.findDOMNode(header);
+		expect(headerNode.innerText).toEqual('Todos (2 Incomplete)');
 	});
 
 	it("onTodoSave method should call addTodo action", () => {
