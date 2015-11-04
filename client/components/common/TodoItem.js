@@ -1,10 +1,10 @@
 import React from 'react';
-import './TodoItem.less';
+import styles from './TodoItem.less';
 
 export default class TodoItem extends React.Component {
 	render() {
 		return (
-			<li className="todo-item">
+			<li className={styles.todoItem}>
 				{ this.props.todo.text }
 			</li>
 		);

@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import classnames from 'classnames';
-import './Header.less';
-
+import header from './Header.less';
 
 export default class Header extends React.Component {
 
@@ -20,25 +19,23 @@ export default class Header extends React.Component {
 	}
 
 	render() {
-		const ulClassList = classnames({
-			'nav': true
-		}, {
-			'expanded': this.state.isExpanded
+		const ulClassList = classnames(header.nav, {
+			[header.expanded]: this.state.isExpanded
 		});
 
 		return (
-			<nav className="navbar">
-				<div className="navbar-container">
-					<div className="navbar-header">
-						<div className="app-title">
+			<nav className={ header.navbar }>
+				<div className={header.navbarContainer}>
+					<div className={header.navbarHeader}>
+						<div className={header.appTitle}>
 							<Link to="/home">ReactApp</Link>
 						</div>
 
 						<i className="fa fa-bars" onClick={this.onToggleClick.bind(this)}></i>
 					</div>
 					<ul className={ulClassList}>
-						<li><Link to="/home" activeClassName="active" onClick={this.onLinkClick.bind(this)}>Home</Link></li>
-						<li><Link to="/about" activeClassName="active" onClick={this.onLinkClick.bind(this)}>About</Link></li>
+						<li><Link to="/home" activeClassName={header.active} onClick={this.onLinkClick.bind(this)}>Home</Link></li>
+						<li><Link to="/about" activeClassName={header.active} onClick={this.onLinkClick.bind(this)}>About</Link></li>
 					</ul>
 				</div>
 			</nav>

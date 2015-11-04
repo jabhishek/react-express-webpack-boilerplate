@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/common/header';
+import styles from './Main.less';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Header/>
-                <div className="view">
+                <div className={ styles.view }>
                     {this.props.children}
                 </div>
             </div>

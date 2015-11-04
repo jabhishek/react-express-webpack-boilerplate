@@ -15,7 +15,7 @@ body {
   height: 100%;
 }
 
-#root {
+:global(#root) {
   height: 100%;
   .loading {
     height: 100%;
@@ -43,7 +43,6 @@ body {
 
 input {
   font-family: @font-family;
-
 }
 
 a {
@@ -61,14 +60,3 @@ h1 {
   padding: 10px;
 }
 
-.page {
-  .subtitle {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-
-  li {
-    padding: 2px 0;
-  }
-}

@@ -37,7 +37,7 @@ describe('TodoStore', () => {
         });
 
         it('addTodo - generates id that is one more than the max id', () => {
-            // add 10 items
+            // add a random number of todos
             for (var i = 1; i <= 10; i++) {
                 let text = `Hello - ${i}`;
                 alt.dispatcher.dispatch({action: addTodoAction, data: {text: text}});

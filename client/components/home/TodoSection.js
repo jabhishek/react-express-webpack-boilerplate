@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from '../common/TodoList';
 import InputField from '../common/inputField';
+import styles from './todoSection.less';
 
 export default class TodoSection extends React.Component {
 	onTodoSave(text) {
@@ -11,7 +12,7 @@ export default class TodoSection extends React.Component {
 
 	render() {
         return (
-            <div className="todo-section">
+            <div className={styles.todoSection}>
                 <TodoList todos={this.props.todos}/>
                 <InputField labelText="Enter a todo task"
                             name="todo"

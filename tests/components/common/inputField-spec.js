@@ -60,11 +60,11 @@ describe("InputField", () => {
 		testUtils.Simulate.focus(inputNode);
 
 		let inputFieldNode = ReactDOM.findDOMNode(inputField);
-		expect(inputFieldNode.classList.contains('has-focus')).toBeTruthy();
+		expect(inputFieldNode.classList.contains('hasFocus')).toBeTruthy();
 
 		testUtils.Simulate.blur(inputNode);
 		inputFieldNode = ReactDOM.findDOMNode(inputField);
-		expect(inputFieldNode.classList.contains('has-focus')).toBeFalsy();
+		expect(inputFieldNode.classList.contains('hasFocus')).toBeFalsy();
 	});
 
 	it("should have class has-value when input has value", () => {
@@ -74,6 +74,6 @@ describe("InputField", () => {
 		testUtils.Simulate.change(inputNode);
 
 		let inputFieldNode = ReactDOM.findDOMNode(inputField);
-		expect(inputFieldNode.classList.contains('has-value')).toBeTruthy();
+		expect(inputFieldNode.classList.contains('hasValue')).toBeTruthy();
 	})
 });

@@ -5,7 +5,6 @@ import Page from '../common/Page';
 import TodoStore from '../../stores/todoStore';
 import TodoActions from '../../actions/todoActions';
 import TodoSection from './TodoSection';
-import './homePage.less';
 
 @connectToStores
 export default class HomePage extends React.Component {
@@ -26,7 +25,6 @@ export default class HomePage extends React.Component {
 		return (
 			<Page className="home-page" headerText={header}>
 				<TodoSection
-					className="todo-section"
 					todos={this.props.todos}
 					onTodoSave={this.onTodoSave.bind(this)}/>
 			</Page>

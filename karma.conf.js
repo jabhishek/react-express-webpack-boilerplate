@@ -34,7 +34,7 @@ module.exports = function (config) {
                     },
                     {
                         test: /\.less$/,
-                        loader: 'style!css!less'
+                        loader: 'style!css?modules&localIdentName=[local]!less'
                     }
                 ],
                 plugins: [

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import './inputField.less';
+import styles from './inputField.less';
 
 export default class InputField extends React.Component {
 	constructor(props) {
@@ -44,9 +44,9 @@ export default class InputField extends React.Component {
 	}
 
 	render() {
-		const classList = classnames('inputField',
-			{'has-focus': this.state.hasFocus},
-			{'has-value': this.hasValue()}
+		const classList = classnames(styles.inputField,
+			{[styles.hasFocus]: this.state.hasFocus},
+			{[styles.hasValue]: this.hasValue()}
 		);
 		return (
 			<div className={classList}>

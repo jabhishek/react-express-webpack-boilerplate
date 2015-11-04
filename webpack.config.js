@@ -43,11 +43,8 @@ module.exports = {
 				include: [path.resolve(__dirname, "client")],
 				loader: 'babel'
 			}, {
-				test: /\.css$/,
-				loader: 'style!css'
-			}, {
 				test: /\.less$/,
-				loader: 'style!css!less'
+				loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]!less'
 				/* To have it create a separate bundle for css
 				 loader: ExtractTextPlugin.extract('style', 'css!less')*/
 			}

@@ -21,7 +21,7 @@ describe("header", function () {
         });
 
         it("should have an app title with text ReactApp", function () {
-            var appTitleNode = ReactDOM.findDOMNode(header).querySelector('.app-title a');
+            var appTitleNode = ReactDOM.findDOMNode(header).querySelector('.appTitle a');
             expect(appTitleNode.innerText).toEqual('ReactApp');
         });
 
