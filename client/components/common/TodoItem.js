@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './TodoItem.less';
+import shouldUpdate from '../../utils/shouldUpdate';
 
+@shouldUpdate('todo')
 export default class TodoItem extends React.Component {
 	render() {
 		return (

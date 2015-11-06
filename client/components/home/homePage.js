@@ -25,7 +25,7 @@ export default class HomePage extends React.Component {
 		return (
 			<Page className="home-page" headerText={header}>
 				<TodoSection
-					todos={this.props.todos}
+					todos={this.props.todos.slice() }
 					onTodoSave={this.onTodoSave.bind(this)}/>
 			</Page>
 		);

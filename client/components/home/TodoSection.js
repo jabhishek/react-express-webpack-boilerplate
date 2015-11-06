@@ -2,7 +2,9 @@ import React from 'react';
 import TodoList from '../common/TodoList';
 import InputField from '../common/inputField';
 import styles from './todoSection.less';
+import shouldUpdate from '../../utils/shouldUpdate';
 
+@shouldUpdate('todos')
 export default class TodoSection extends React.Component {
 	onTodoSave(text) {
 		if (this.props.onTodoSave) {
@@ -13,10 +15,10 @@ export default class TodoSection extends React.Component {
 	render() {
         return (
             <div className={styles.todoSection}>
-                <TodoList todos={this.props.todos}/>
                 <InputField labelText="Enter a todo task"
                             name="todo"
                             onSave={this.onTodoSave.bind(this)}/>
+                <TodoList todos={this.props.todos}/>
             </div>
         );
     }
